@@ -1,5 +1,6 @@
 import json
 import time
+import math
 from pathlib import Path
 
 import pandas as pd
@@ -13,6 +14,8 @@ def main():
         "run_id": run_id,
         "dt_s": 0.1,
         "steps": 120,
+        "cmd_v": 0.1,
+        "cmd_omega": 0.3,
         "start_pose": {"x_m": 0.0, "y_m": 0.0, "yaw_rad": 0.0},
         "goal": {"x_m": 120, "y_m": 0}
     }
@@ -20,6 +23,8 @@ def main():
 
     dt = 0.1
     steps = 120
+    cmd_v = 0.1
+    cmd_omega = 0.3
 
     rows = []
     x, y, yaw = 0.0, 0.0, 0.0
@@ -29,7 +34,10 @@ def main():
 
         rows.append({"t_s": t, "x_m": x, "y_m": y, "yaw_rad": yaw})
 
-        x += 0.1
+        x = x + (cmd_v * math.cos(yaw) * dt)
+        y = y + (cmd_v * math.sin(yaw) * dt)
+        yaw = yaw + (cmd_omega * dt)
+
     
     df = pd.DataFrame(rows)
     print("rows:", len(df))
