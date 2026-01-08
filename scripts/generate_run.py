@@ -24,7 +24,7 @@ def main():
     dt = 0.1
     steps = 120
     cmd_v = 0.1
-    cmd_omega = 0.3
+    cmd_omega = 0.05
 
     rows = []
     x, y, yaw = 0.0, 0.0, 0.0
