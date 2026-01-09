@@ -38,6 +38,9 @@ def main():
         interval=50,
     )
 
+    writer = animation.PillowWriter(fps=15, metadata=dict(artist='Me'), bitrate=1800)
+    anim.save(run_dir / "animation.gif", writer=writer)
+
     plt.show()
 
 
