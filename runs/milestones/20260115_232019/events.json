@@ -1,0 +1,10 @@
+[
+  {
+    "t_s": 0.0,
+    "type": "run_started"
+  },
+  {
+    "t_s": 11.9,
+    "type": "run_finished"
+  }
+]

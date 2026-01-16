@@ -1,0 +1,19 @@
+{
+  "run_id": "20260115_230117",
+  "schema_version": 1,
+  "model": "rover",
+  "seed": 1,
+  "dt_s": 0.1,
+  "steps": 120,
+  "cmd_v_mps": 0.1,
+  "cmd_omega_rps": 0.05,
+  "start_pose": {
+    "x_m": 0.0,
+    "y_m": 0.0,
+    "yaw_rad": 0.0
+  },
+  "goal": {
+    "x_m": 1.2,
+    "y_m": 0
+  }
+}
