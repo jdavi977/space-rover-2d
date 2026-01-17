@@ -19,6 +19,10 @@ def main():
 
     n = min(len(first_run), len(second_run))
 
+    first_divergence = {}
+    max_dist = 0
+    max = {}
+
     for row in range(n):
         time = first_run["t_s"].iloc[row]
 
@@ -30,11 +34,33 @@ def main():
 
         dist = math.sqrt((xA[row] - xB[row])**2 + (yA[row] - yB[row])**2)
 
-        if dist > dist_threshold:
-            print(f"Index: {row}")
-            print(f"Time: {time}")
-            print(f"Distance: {dist}")
-            print(f"Distance threshold: {dist_threshold}")
+        if dist > dist_threshold and not first_divergence:
+            first_divergence = {
+                "Type": "First Divergence",
+                "Index": {row},
+                "t_s": {time},
+                "dist_m": {dist},
+                "Distance threshold": {dist_threshold}
+            }
+            print(first_divergence)
+        
+        if dist >= max_dist:
+            max_dist = dist
+            max = {
+                "Type": "Max Distance",
+                "Index": {row},
+                "t_s": {time},
+                "dist_m": {dist}
+            }
+
+        if dist > dist_threshold and row == (n - 1):
+            final = {
+                "Type": "Final Distance",
+                "t_s": {time},
+                "dist_m": {dist}
+            }
+            print(max)
+            print(final)
             break
     else:
         print("No divergence")
